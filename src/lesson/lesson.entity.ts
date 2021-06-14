@@ -34,4 +34,10 @@ export class Lesson {
    */
   @Column()
   endDate: string;
+
+  /**
+   * Studenti associati alla lezione
+   */
+  @Column()
+  students: string[];
 }

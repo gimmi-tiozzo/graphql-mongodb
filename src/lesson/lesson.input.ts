@@ -1,5 +1,5 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { IsDateString, MinLength } from 'class-validator';
+import { Field, ID, InputType } from '@nestjs/graphql';
+import { IsDateString, IsUUID, MinLength } from 'class-validator';
 
 /**
  * Input per la mutation di creazione di Lesson
@@ -24,4 +24,12 @@ export class CreateLessonInput {
   @IsDateString()
   @Field()
   endDate: string;
+
+  /**
+   * Lista degli id degli studenti associati alla lezione
+   */
+  @IsUUID('4', { each: true })
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  @Field((_type) => [ID], { defaultValue: [] })
+  students: string[];
 }
